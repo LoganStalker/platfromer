@@ -15,6 +15,12 @@ class Camera:
 
 
 def camera_configure(camera, target_rect):
+    """
+    Config camera before game will be started.
+    :param camera:
+    :param target_rect:
+    :return:
+    """
     l, t, _, _ = target_rect
     _, _, w, h = camera
     l, t = -l+WIDTH/2, -t+HEIGHT/2
