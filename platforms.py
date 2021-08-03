@@ -59,3 +59,6 @@ class FirePlatform(BasePlatform):
 
     def draw(self, surface):
         surface.blit(self.image, (self.rect.x, self.rect.y))
+
+    def collided_with_player(self, player):
+        player.start_burn()
