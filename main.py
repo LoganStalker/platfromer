@@ -1,7 +1,7 @@
 import pygame
 
 from player import Player
-from platforms import Brick, Question, Red, Portal
+from platforms import Brick, Question, Red, Portal, FirePlatform
 from config import WIDTH, HEIGHT
 from enemy import Enemy
 from camera import camera_creator
@@ -28,7 +28,7 @@ level = [
     '-                              -',
     '-               --             -',
     '-                              -',
-    '-                     --       -',
+    '-   fff                  --    -',
     '-           ---                -',
     '-       ~          -        -- -',
     '-                          -   -',
@@ -60,6 +60,9 @@ for row in level:
             portals.append(portal)
         if sim == "+":
             enemy = Enemy(x, y)
+        if sim == "f":
+            fire = FirePlatform(x, y)
+            platforms.append(fire)
         x += 50
     y += 50
     x = 0
