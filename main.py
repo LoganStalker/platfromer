@@ -1,7 +1,7 @@
 import pygame
 
 from player import Player
-from platforms import Brick, Question, Red, Portal, FirePlatform
+from platforms import Brick, Question, Red, Portal, FirePlatform, FrozenPlatform
 from config import WIDTH, HEIGHT
 from enemy import Enemy
 from camera import camera_creator
@@ -21,23 +21,23 @@ level = [
     '-          ??                  -',
     '-                              -',
     '-                          --  -',
-    '-                -             -',
-    '-   ~~                         -',
+    '-          i      -            -',
+    '-   ~~                i        -',
     '-                              -',
     '-     +   ---?       -??-      -',
-    '-                              -',
-    '-               --             -',
+    '-  i                           -',
+    '-               --   i         -',
     '-                              -',
     '-   fff                  --    -',
     '-           ---                -',
     '-       ~          -        -- -',
-    '-                          -   -',
-    '-                 ???-   -     -',
+    '- i                         -  -',
+    '-            i     ???-   -    -',
     '-  -?-                         -',
     '-       ---                    -',
     '-                        ?-    -',
-    '-                              -',
-    '--------------------------------',
+    '-                  i           -',
+    '----------------iii-------------',
 ]
 platforms = []
 x, y = 0, 0
@@ -63,6 +63,9 @@ for row in level:
         if sim == "f":
             fire = FirePlatform(x, y)
             platforms.append(fire)
+        if sim == "i":
+            ice = FrozenPlatform(x, y)
+            platforms.append(ice)
         x += 50
     y += 50
     x = 0

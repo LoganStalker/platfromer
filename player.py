@@ -4,6 +4,8 @@ import time
 from config import HEIGHT
 
 fire_img = pygame.image.load("images/fire.png")
+iced_img = pygame.image.load("images/iced.png")
+
 
 class Player:
     def __init__(self, x, y):
@@ -16,6 +18,7 @@ class Player:
         self.onground = False
         self.big_before = 0
         self.burn_before = 0
+        self.iced_before = 0
 
     def boost_size(self):
         self.rect = pygame.Rect(self.rect.x, self.rect.y, 60, 60)
@@ -32,6 +35,15 @@ class Player:
         else:
             self.image.fill((0, 255, 0))
 
+    def start_iced(self):
+        self.iced_before = time.time() + 5
+
+    def iced(self):
+        if time.time() < self.iced_before:
+            self.image.blit(iced_img, (0, 0))
+        else:
+            self.image.fill((0, 255, 0))
+
     def stop_boost(self):
         self.rect = pygame.Rect(self.rect.x, self.rect.y, 50, 50)
         self.image = pygame.Surface((50, 50))
@@ -42,6 +54,7 @@ class Player:
         if time.time() > self.big_before:
             self.stop_boost()
         self.burn()
+        self.iced()
         if left:
             self.velx = -1
         if right:
