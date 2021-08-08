@@ -66,3 +66,9 @@ class Player:
                     self.rect.top = platform.rect.bottom
                     self.vely = 0
                 platform.collided_with_player(self)
+
+    def start_thorns(self):
+        self.thorns_before = time.time() + 2
+        self.image.fill((105, 131, 57))
+
+

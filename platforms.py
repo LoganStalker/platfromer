@@ -49,3 +49,14 @@ class Portal(BasePlatform):
     def collided_with_player(self, player):
         player.rect.x = self.goal[0]
         player.rect.y = self.goal[1]
+
+
+class Thorns(BasePlatform):
+    def __init__(self, x, y):
+        self.rect = pygame.Rect(x, y, 50, 50)
+        self.image = pygame.Surface((50, 50))
+        self.image.fill((105, 131, 57))
+
+    def collided_with_player(self, player):
+        player.start_thorns()
+
